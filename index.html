@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday, Naomi!! ♡</title>
+<link href="https://fonts.googleapis.com/css2?family=Cherry+Bomb+One&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<!-- =====================================================
+     SPARKLE CONTAINER
+     ===================================================== -->
+<div class="sparkle-container" id="sparkleContainer"></div>
+
+<!-- Floating hearts background -->
+<div class="hearts-bg" id="heartsContainer"></div>
+
+<!-- =====================================================
+     WELCOME SCREEN
+     ===================================================== -->
+<div class="screen" id="welcome-screen">
+  <h1 class="welcome-title">It's your birthday, Naomi!!</h1>
+  <div class="welcome-characters">
+    <img src="assets/pink-cherry-bear.png" alt="Cherry bear" class="bear-img">
+    <button class="present-btn" id="presentBtn" title="Click to open your gifts!">
+      <div class="speech-bubble">click on the present to open your gifts! ♡</div>
+      <img src="assets/pink-present.png" alt="Present">
+    </button>
+  </div>
+</div>
+
+<!-- =====================================================
+     HOME / MAIN MENU SCREEN
+     ===================================================== -->
+<div class="screen hidden" id="home-screen">
+  <button class="back-btn" id="home-back-btn">← back</button>  
+  <h1 class="home-title">Happy birthday, Naomi!! ♡</h1>
+  <div class="menu-grid">
+    <div class="menu-item" id="btn-letter">
+      <img src="assets/pink-envelope.png" alt="Envelope" class="menu-icon">
+      <span class="menu-label">a letter from me to you</span>
+    </div>
+    <div class="menu-item" id="btn-journal">
+      <img src="assets/pink-journal.png" alt="Journal" class="menu-icon">
+      <span class="menu-label">your own digital journal</span>
+    </div>
+    <div class="menu-item" id="btn-playlist">
+      <img src="assets/pink-music-notes.png" alt="Music notes" class="menu-icon">
+      <span class="menu-label">create a music playlist</span>
+    </div>
+    <div class="menu-item" id="btn-games">
+      <img src="assets/pink-videogames.png" alt="Video games" class="menu-icon">
+      <span class="menu-label">some games inspired by you</span>
+    </div>
+  </div>
+</div>
+
+<!-- =====================================================
+     LETTER SCREEN
+     ===================================================== -->
+<div class="screen inner-screen hidden" id="letter-screen">
+  <button class="back-btn" data-back>← back</button>
+  <h2 class="section-title">♡ a letter for you ♡</h2>
+  <div class="letter-wrapper">
+    <div class="letter-envelope-anim">
+      <img src="assets/pink-envelope.png" alt="Envelope" class="envelope-icon">
+    </div>
+    <div class="letter-paper">
+      <div class="letter-deco" style="top:20px;right:30px;font-size:28px;">✿</div>
+      <div class="letter-deco" style="bottom:25px;left:20px;font-size:22px;">♡</div>
+      <div class="letter-deco" style="top:50%;right:15px;font-size:18px;">✦</div>
+      <p class="letter-greeting">Dear Naomi,</p>
+      <div class="letter-body">
+        <p>I hope you are enjoying your special day!</p>
+        <p>I made this cute website just for you. I hope you like it! You can play games, make a playlist for yourself, and journal anything you want. </p>
+        <p>You inspire me so much and I am so proud of you. Your laugh and your smile, your creativity, and your passion for the things you love - it makes my heart very warm. I hope you know how special you are, not just today but always.</p>
+        <p>Thank you so much for sharing your journey with us. It's been wonderful to witness!</p>
+        <p>May this year bring you every beautiful thing you deserve — more dancing, more laughter, more of the music and moments that make your heart feel full.</p>
+        <p>Happy birthday, Naomi! I hope it's everything and more. ♡</p>
+        <p>P. S. I can't wait to see you on tour!♡</p>
+      </div>
+      <div class="letter-sign">with so much love, Nia ♡</div>
+    </div>
+  </div>
+</div>
+
+<!-- =====================================================
+     JOURNAL SCREEN
+     ===================================================== -->
+<div class="screen inner-screen hidden" id="journal-screen">
+  <button class="back-btn" data-back>← back</button>
+  <h2 class="section-title">♡ your dream journal ♡</h2>
+  <div class="journal-wrapper">
+    <div class="journal-input-card">
+      <h3>✍︎ new entry</h3>
+      <textarea class="journal-field" id="journalText" rows="5" placeholder="write your dreams, goals, thoughts..."></textarea>
+
+      <!-- Sticker shop invite -->
+      <div class="sticker-shop-invite">
+        <span class="sticker-shop-invite-text">want a cute sticker?</span>
+        <button class="sticker-shop-btn" id="openStickerShop">visit the sticker shop! 🛍️</button>
+      </div>
+
+      <!-- Sticker inventory: stickers collected from the shop -->
+      <div class="sticker-inventory">
+        <p class="sticker-inventory-label">your stickers ♡ <span class="sticker-inventory-hint">(click to add to entry)</span></p>
+        <div class="sticker-inventory-grid" id="stickerInventoryGrid">
+          <p class="empty-state" id="inventoryEmpty" style="padding:10px 0;font-size:1rem;">no stickers yet — visit the shop! ✨</p>
+        </div>
+      </div>
+
+      <!-- Selected stickers preview + save -->
+      <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-top:8px;">
+        <button class="save-btn" id="saveJournalBtn">save entry ♡</button>
+        <div id="journalStickerPreview" class="journal-sticker-preview"></div>
+      </div>
+    </div>
+    <div class="journal-entries" id="journalEntries">
+      <div class="empty-state" id="journalEmpty">your journal is waiting for your dreams... ✨</div>
+    </div>
+  </div>
+</div>
+
+<!-- =====================================================
+     PLAYLIST SCREEN
+     ===================================================== -->
+<div class="screen inner-screen hidden" id="playlist-screen">
+  <button class="back-btn" data-back>← back</button>
+  <h2 class="section-title">♡ your playlist ♡</h2>
+  <div class="playlist-wrapper">
+    <img src="assets/pink-music-notes.png" alt="Music notes" class="music-icon-header">
+    <div class="playlist-input-card">
+      <div class="playlist-row">
+        <input class="playlist-field" id="songTitle" placeholder="✎ song title..." type="text">
+        <input class="playlist-field" id="songArtist" placeholder="♪ artist..." type="text">
+      </div>
+      <button class="save-btn" id="addSongBtn">add to playlist ♡</button>
+    </div>
+    <div class="playlist-list" id="playlistList">
+      <div class="empty-state" id="playlistEmpty">add any songs you like... 🎵</div>
+    </div>
+  </div>
+</div>
+
+
+
+<!-- =====================================================
+     GAMES SCREEN
+     ===================================================== -->
+<div class="screen inner-screen hidden" id="games-screen">
+  <button class="back-btn" data-back>← back</button>
+
+  <div class="arcade-wrapper">
+    <h2 class="arcade-title">Welcome to the Arcade!</h2>
+    <p class="arcade-subtitle">pick a fun little game to play ♡</p>
+
+    <div class="arcade-grid">
+
+      <!-- Cherry Crush -->
+      <a
+        class="arcade-game-card cherry-game"
+        href="https://niajohnna02.github.io/cherry-crush/welcome.html"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <div class="game-art cherry-art">
+          <img src="assets/cherry-bear.png" alt="Cherry bear" class="game-img cherry-bear-img">
+          <img src="assets/cherry-basket.png" alt="Cherry basket" class="game-img cherry-basket-img">
+        </div>
+
+        <h3>cherry crush</h3>
+        <p>catch you some cherries! this was inspired by your song, "Cherry" ♡</p>
+        <span class="arcade-play-btn">play ♡</span>
+      </a>
+
+      <!-- Little Tutu's Love Quest -->
+      <a
+        class="arcade-game-card turtle-game"
+        href="https://niajohnna02.github.io/little-tutus-love-quest/"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <div class="game-art turtle-art">
+          <img src="assets/turtle.png" alt="Little turtle" class="game-img turtle-img">
+          <img src="assets/turtle-boo.png" alt="Turtle boo" class="game-img turtle-boo-img">
+        </div>
+
+        <h3>little tutu’s love quest</h3>
+        <p>help little tutu collect love and reach her boo. this was inspired by your song, "Losing You" ♡</p>
+        <span class="arcade-play-btn">play ♡</span>
+      </a>
+
+      <!-- Lemon Drop -->
+      <a
+        class="arcade-game-card lemon-game"
+        href="https://niajohnna02.github.io/lemon-drop/"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <div class="game-art lemon-art">
+          <img src="assets/lemonade.png" alt="Lemonade" class="game-img lemonade-img">
+          <img src="assets/lemons.png" alt="Lemons" class="game-img lemons-img">
+        </div>
+
+        <h3>lemon drop</h3>
+        <p>catch lemons and make the sweetest lemonade. this was inspired by the movie, "Lemonade Mouth" ♡</p>
+        <span class="arcade-play-btn">play ♡</span>
+      </a>
+
+    </div>
+  </div>
+</div>
+
+<!-- =====================================================
+     STICKER SHOP MODAL
+     ===================================================== -->
+<div class="game-modal-overlay" id="sticker-shop-modal">
+  <div class="game-modal sticker-shop-modal-inner">
+    <button class="modal-close" id="closeStickerShopLeave">✕</button>
+    <div class="modal-title">♡ sticker shop ♡</div>
+    <p class="sticker-shop-subtitle">choose your stickers and how many you want!</p>
+    <div class="shop-grid">
+
+      <div class="shop-item">
+        <img src="assets/brown-bear.png" alt="Brown Bear" class="shop-sticker-img">
+        <p class="shop-item-name">brown bear</p>
+        <div class="shop-qty-row">
+          <button class="qty-btn" data-sticker="brown-bear" data-action="minus">−</button>
+          <span class="qty-display" id="qty-brown-bear">0</span>
+          <button class="qty-btn" data-sticker="brown-bear" data-action="plus">+</button>
+        </div>
+      </div>
+
+      <div class="shop-item">
+        <img src="assets/cherry-bear.png" alt="Cherry Bear" class="shop-sticker-img">
+        <p class="shop-item-name">cherry bear</p>
+        <div class="shop-qty-row">
+          <button class="qty-btn" data-sticker="cherry-bear" data-action="minus">−</button>
+          <span class="qty-display" id="qty-cherry-bear">0</span>
+          <button class="qty-btn" data-sticker="cherry-bear" data-action="plus">+</button>
+        </div>
+      </div>
+
+      <div class="shop-item">
+        <img src="assets/cherry-clock.png" alt="Cherry Clock" class="shop-sticker-img">
+        <p class="shop-item-name">cherries</p>
+        <div class="shop-qty-row">
+          <button class="qty-btn" data-sticker="cherry-clock" data-action="minus">−</button>
+          <span class="qty-display" id="qty-cherry-clock">0</span>
+          <button class="qty-btn" data-sticker="cherry-clock" data-action="plus">+</button>
+        </div>
+      </div>
+
+      <div class="shop-item">
+        <img src="assets/pink-cherry-bear.png" alt="Pink Cherry Bear" class="shop-sticker-img">
+        <p class="shop-item-name">pink cherry bear</p>
+        <div class="shop-qty-row">
+          <button class="qty-btn" data-sticker="pink-cherry-bear" data-action="minus">−</button>
+          <span class="qty-display" id="qty-pink-cherry-bear">0</span>
+          <button class="qty-btn" data-sticker="pink-cherry-bear" data-action="plus">+</button>
+        </div>
+      </div>
+
+      <div class="shop-item">
+        <img src="assets/pink-heart1.png" alt="Pink Heart" class="shop-sticker-img">
+        <p class="shop-item-name">pink heart</p>
+        <div class="shop-qty-row">
+          <button class="qty-btn" data-sticker="pink-heart1" data-action="minus">−</button>
+          <span class="qty-display" id="qty-pink-heart1">0</span>
+          <button class="qty-btn" data-sticker="pink-heart1" data-action="plus">+</button>
+        </div>
+      </div>
+
+      <div class="shop-item">
+        <img src="assets/pink-heart2.png" alt="Hot Pink Heart" class="shop-sticker-img">
+        <p class="shop-item-name">hot pink heart</p>
+        <div class="shop-qty-row">
+          <button class="qty-btn" data-sticker="pink-heart2" data-action="minus">−</button>
+          <span class="qty-display" id="qty-pink-heart2">0</span>
+          <button class="qty-btn" data-sticker="pink-heart2" data-action="plus">+</button>
+        </div>
+      </div>
+
+      <div class="shop-item">
+        <img src="assets/small-brown-bear.png" alt="Small Brown Bear" class="shop-sticker-img">
+        <p class="shop-item-name">small brown bear</p>
+        <div class="shop-qty-row">
+          <button class="qty-btn" data-sticker="small-brown-bear" data-action="minus">−</button>
+          <span class="qty-display" id="qty-small-brown-bear">0</span>
+          <button class="qty-btn" data-sticker="small-brown-bear" data-action="plus">+</button>
+        </div>
+      </div>
+
+      <div class="shop-item">
+        <img src="assets/small-pinkbear.png" alt="Small Pink Bear" class="shop-sticker-img">
+        <p class="shop-item-name">small pink bear</p>
+        <div class="shop-qty-row">
+          <button class="qty-btn" data-sticker="small-pinkbear" data-action="minus">−</button>
+          <span class="qty-display" id="qty-small-pinkbear">0</span>
+          <button class="qty-btn" data-sticker="small-pinkbear" data-action="plus">+</button>
+        </div>
+      </div>
+
+    </div>
+    <div class="shop-footer">
+      <button class="save-btn" id="shopDoneBtn">i'm done! ♡</button>
+      <button class="shop-leave-btn" id="shopLeaveBtn">leave shop</button>
+    </div>
+  </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
