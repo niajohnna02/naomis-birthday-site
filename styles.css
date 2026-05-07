@@ -1227,3 +1227,25 @@ body {
   position: absolute;
   object-fit: contain;
 }
+
+/* FIX: sticker shop modal overlay */
+#sticker-shop-modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 3000;
+  background: rgba(249, 224, 239, 0.92);
+  backdrop-filter: blur(6px);
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+
+#sticker-shop-modal.active {
+  display: flex;
+}
+
+#sticker-shop-modal .game-modal {
+  max-height: 85vh;
+  overflow-y: auto;
+}
